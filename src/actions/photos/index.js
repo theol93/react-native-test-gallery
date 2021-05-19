@@ -1,6 +1,6 @@
-export default function getPhotos(id, uri, date) {
+export default function getPhotos(uri, date) {
   return {
     type: 'ADD_PHOTO',
-    payload: {id, uri, date},
+    payload: {uri, date},
   };
 }

@@ -13,12 +13,10 @@ function App(props) {
 
   //Every changes photo uri push data to store
   useEffect(() => {
-    let id = Date.now();
     let date = moment().format('MMMM Do YYYY, h:mm:ss a');
 
     if (fileUri !== '') {
-      console.log(date);
-      setPhotos(id, fileUri, date);
+      setPhotos(fileUri, date);
     }
   }, [fileUri]);
 
@@ -32,6 +30,7 @@ function App(props) {
     };
 
     launchCamera(options, response => {
+      console.log('resnseURI ', response.uri);
       if (response.didCancel) {
         return;
       } else if (response.error) {
@@ -136,7 +135,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setPhotos: (id, uri, date) => dispatch(getPhotos(id, uri, date)),
+    setPhotos: (uri, date) => dispatch(getPhotos(uri, date)),
   };
 };
 
